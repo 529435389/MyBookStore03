@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace属性：用来设置接口的全类名 -->
+<mapper namespace="edu.sdp.com.manager.mapper.ManagerBookMapper">
+
+	<select id="getBooks" resultType="edu.sdp.com.entities.Book">
+		select * from books
+	</select>
+	<insert id="addBook" parameterType="edu.sdp.com.entities.Book">
+		insert into
+		books(title,author,price,sales,stock)
+		value(#{title},#{author},#{price},#{sales},#{stock})
+	</insert>
+	<select id="getBookById" resultType="edu.sdp.com.entities.Book">
+		select * from books where
+		id=#{id}
+	</select>
+	<update id="update">
+		update books
+		<set>
+			title=#{title},author=#{author},price=#{price},sales=#{sales},stock=#{stock}
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+	<delete id="deleteBookById">
+		delete from books where id=#{id}
+	</delete>
+</mapper>
